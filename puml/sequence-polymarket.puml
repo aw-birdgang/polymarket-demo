@@ -1,0 +1,67 @@
+@startuml
+' == 스타일 설정 ==
+skinparam backgroundColor #FFFFFF
+skinparam sequence {
+    ArrowColor #4F81BD
+    ActorBorderColor #2E74B5
+    ParticipantBorderColor #2E74B5
+    LifeLineBorderColor #D9D9D9
+    LifeLineBackgroundColor #F3F9FF
+    ParticipantBackgroundColor #EAF3FF
+    ActorBackgroundColor #C6E2FF
+    NoteBackgroundColor #FFFFCC
+    NoteBorderColor #B7B7B7
+    BoxBackgroundColor #F9F9F9
+    MessageAlign center
+    MessageFontSize 14
+    ParticipantFontSize 14
+}
+
+' == 주요 참가자 ==
+actor User as U #C6E2FF
+participant "🌍 Frontend\n(React + Ethers.js)" as FE #EAF3FF
+participant "🗄️ Backend\n(Node.js + API)" as BE #FFF4E6
+participant "⚡ Smart Contract\n(Solidity)" as SC #F3FFF3
+participant "📡 UMA Optimistic Oracle" as Oracle #FDEFF9
+
+' == 시퀀스 시작 ==
+
+title **Polymarket 전체 흐름 시퀀스 다이어그램**
+
+== 📦 Market Creation ==
+U -> FE : 1️⃣ Open App & Connect Wallet
+FE -> BE : 2️⃣ Request to Create Market (market info)
+BE -> SC : 3️⃣ createMarket(question, endTime)
+SC --> BE : ✅ Market Created (marketId)
+BE --> FE : ✅ Market Created Successfully
+FE --> U : 🗂️ Display Market on Dashboard
+
+== 🎯 Placing a Bet ==
+U -> FE : 1️⃣ Select Market & Place Bet (YES/NO)
+FE -> U : 🔏 Request Transaction Signature (MetaMask)
+U --> FE : ✍️ Sign Transaction
+FE -> SC : 2️⃣ placeBet(marketId, outcome) [Signed TX]
+SC --> FE : ✅ Bet Placed Successfully
+FE --> U : 📢 Show Bet Confirmation
+
+== 🔍 Market Resolution ==
+U -> FE : 1️⃣ Check Market Result (After End Time)
+FE -> BE : 2️⃣ Request Market Resolution
+BE -> SC : 3️⃣ resolveMarket(marketId)
+SC -> SC : 🔄 Request Event Resolution (via OracleManager)
+SC -> Oracle : 📡 requestPrice(marketId, eventData)
+note right of Oracle : ⏳ Verify Data + Dispute Period
+Oracle --> SC : ✅ Event Outcome (YES/NO)
+SC --> BE : ✅ Market Resolved (outcome)
+BE --> FE : 🎯 Return Market Outcome
+FE --> U : 📰 Display Market Result
+
+== 💰 Claiming Winnings ==
+U -> FE : 1️⃣ Claim Winnings
+FE -> U : 🔏 Request Transaction Signature (MetaMask)
+U --> FE : ✍️ Sign Transaction
+FE -> SC : 2️⃣ claimWinnings(marketId) [Signed TX]
+SC --> FE : 💸 Winnings Transferred (ETH)
+FE --> U : 🎉 Show Payout Confirmation
+
+@enduml

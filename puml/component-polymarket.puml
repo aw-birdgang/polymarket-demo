@@ -1,0 +1,55 @@
+@startuml
+' Define style
+skinparam componentStyle rectangle
+skinparam shadowing true
+skinparam backgroundColor #FFFFFF
+skinparam component {
+    BackgroundColor<<frontend>> #F3F9FF
+    BackgroundColor<<backend>> #FFF8F3
+    BackgroundColor<<smartcontract>> #F3FFF3
+    BackgroundColor<<oracle>> #FDF3FF
+    BorderColor black
+    FontColor black
+}
+
+' Frontend
+package "🌍 Frontend (React + Ethers.js)" <<frontend>> {
+    [UI Layer] as UI
+    [Wallet Integration\n(MetaMask, WalletConnect)] as Wallet
+    [Web3 Interaction\n(Ethers.js)] as Web3
+}
+
+' Backend
+package "🗄️ Backend (Node.js + Express)" <<backend>> {
+    [API Gateway\n(REST/GraphQL)] as API
+    [Business Logic Layer] as Logic
+    [Database\n(PostgreSQL/MongoDB)] as DB
+    [Cache\n(Redis)] as Cache
+}
+
+' Smart Contract
+package "⚡ Smart Contract (Solidity)" <<smartcontract>> {
+    [PredictionMarket Contract] as PMContract
+    [OracleManager Contract] as OracleMgr
+}
+
+' Oracle
+package "📡 UMA Optimistic Oracle" <<oracle>> {
+    [Oracle Request Handler] as OracleReq
+    [Dispute Mechanism] as Dispute
+}
+
+' Relationships
+UI --> API : HTTP Requests (REST/GraphQL)
+Wallet --> Web3 : Sign Transactions
+Web3 --> PMContract : Smart Contract Calls (placeBet, claimWinnings)
+API --> PMContract : Interact via Web3.js (server-side)
+API --> DB : CRUD Operations
+API --> Cache : Data Caching
+PMContract --> OracleMgr : Request Event Resolution
+OracleMgr --> OracleReq : Request Outcome
+OracleReq --> Dispute : Handle Disputes (if any)
+OracleReq --> OracleMgr : Return Verified Outcome
+OracleMgr --> PMContract : Finalize Market Resolution
+
+@enduml

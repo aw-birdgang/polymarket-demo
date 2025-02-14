@@ -15,7 +15,7 @@ This document analyzes how **the liquidity pool changes when 5 traders place bet
 
 ## 🎯 **2. 5 Traders Place Bets (Liquidity Pool Simulation)**  
 
-| Step | Trader | Bet Direction | Bet Amount | YES Pool After Bet | NO Pool After Bet | Market Ratio (YES:NO) |
+| Step | Trader | Bet Direction | Bet Amount | YES Pool After Bet | NO Pool After Bet | Liquidity Ratio (YES:NO) |
 |---|---|---|---|---|---|---|
 | 1️⃣ | Bob | YES | $2,000 | **$7,000** | $5,000 | **58.3% : 41.7%** |
 | 2️⃣ | Charlie | NO | $3,000 | $7,000 | **$8,000** | **46.7% : 53.3%** |
@@ -23,7 +23,7 @@ This document analyzes how **the liquidity pool changes when 5 traders place bet
 | 4️⃣ | Emma | NO | $2,500 | $11,000 | **$10,500** | **51.2% : 48.8%** |
 | 5️⃣ | Frank | YES | $1,500 | **$12,500** | $10,500 | **54.3% : 45.7%** |
 
-📌 **Market Ratio Calculation Formula:**  
+📌 **Liquidity Ratio Calculation Formula:**  
 ```math
 YES Ratio = (YES Pool / (YES Pool + NO Pool)) × 100
 NO Ratio = (NO Pool / (YES Pool + NO Pool)) × 100
@@ -38,7 +38,7 @@ NO Ratio = (NO Pool / (YES Pool + NO Pool)) × 100
 4️⃣ Emma bets on NO → NO ratio increases (YES 57.9% → 51.2%)
 5️⃣ Frank bets on YES → YES ratio final increase (YES 51.2% → 54.3%)
 
-✅ Final Market Ratio:
+✅ Final Liquidity Ratio:
 
 YES: 54.3%
 NO: 45.7%

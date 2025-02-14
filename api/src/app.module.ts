@@ -1,0 +1,45 @@
+import {Module} from "@nestjs/common";
+import {TypeOrmModule} from "@nestjs/typeorm";
+import {DataSource, DataSourceOptions} from "typeorm";
+import {ConfigModule} from "@nestjs/config";
+import {TypeOrmConfigService} from "./database/typeorm-config.service";
+import databaseConfig from "./database/config/database.config";
+import commonConfig from "./config/common.config";
+import redisConfig from "./redis/config/redis.config";
+import {MarketModule} from "./market/market.module";
+import {WalletModule} from "./wallet/wallet.module";
+import {RedisModule} from "./redis/redis.module";
+import {BetModule} from "./bet/bet.module";
+import {UserModule} from './user/user.module';
+
+
+// <database-block>
+const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
+  useClass: TypeOrmConfigService,
+  dataSourceFactory: async (options: DataSourceOptions) => {
+    console.log('infrastructureDatabaseModule > DataSource options:', options);
+    return new DataSource(options).initialize();
+  },
+});
+// </database-block>
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [
+        commonConfig,
+        databaseConfig,
+        redisConfig,
+      ],
+      envFilePath: ['.env'],
+    }),
+    infrastructureDatabaseModule,
+    RedisModule,
+    MarketModule,
+    BetModule,
+    WalletModule,
+    UserModule,
+  ],
+})
+export class AppModule {}

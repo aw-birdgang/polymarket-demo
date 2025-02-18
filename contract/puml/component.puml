@@ -1,0 +1,44 @@
+@startuml
+skinparam componentStyle rectangle
+
+package "Polymarket Application" {
+
+    [Frontend (React + Ethers.js)] <<Browser>>
+    [Backend (NestJS + Web3.js)] <<Server>>
+    [Smart Contracts (Solidity)] <<Blockchain>>
+
+    component "PredictionMarket Contract" {
+        [PredictionMarket]
+    }
+
+    component "OracleManager Contract" {
+        [OracleManager]
+    }
+
+    component "Migrations Contract" {
+        [Migrations]
+    }
+
+    component "UMA Optimistic Oracle" {
+        [UMA Oracle]
+    }
+
+    database "Database" {
+        [PostgreSQL/MongoDB]
+    }
+
+    component "Cache" {
+        [Redis]
+    }
+
+    [Frontend (React + Ethers.js)] --> [Backend (NestJS + Web3.js)]: "HTTP API Requests (REST/GraphQL)"
+    [Backend (NestJS + Web3.js)] --> [PredictionMarket]: "Interact via Web3.js (placeBet, claimWinnings)"
+    [Backend (NestJS + Web3.js)] --> [Database]: "CRUD Operations"
+    [Backend (NestJS + Web3.js)] --> [Cache]: "Data Caching"
+    [PredictionMarket] --> [OracleManager]: "Request event resolution"
+    [OracleManager] --> [UMA Oracle]: "Send/Receive oracle results"
+    [Migrations] --> [PredictionMarket]: "Deployment Management"
+
+    [Frontend (React + Ethers.js)] --> [PredictionMarket]: "Direct interaction (placeBet, claimWinnings)"
+}
+@enduml

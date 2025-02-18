@@ -1,0 +1,57 @@
+@startuml
+!define Solidity https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css
+
+skinparam class {
+    BackgroundColor White
+    BorderColor Black
+    ArrowColor Blue
+}
+
+package "Polymarket Smart Contracts" {
+
+    class PredictionMarket {
+        +createMarket(question: string, endTime: uint256)
+        +placeBet(marketId: uint256, betOnYes: bool)
+        +resolveMarket(marketId: uint256, outcomeYes: bool)
+        +claimWinnings(marketId: uint256)
+        +getContractBalance(): uint256
+        -markets: mapping(uint256 => Market)
+    }
+
+    class OracleManager {
+        +requestOutcome(marketId: uint256, question: string)
+        +receiveOutcome(marketId: uint256, result: bool)
+        -optimisticOracle: address
+    }
+
+    class Migrations {
+        +setCompleted(step: uint256)
+        +transferOwnership(newOwner: address)
+        -lastCompletedMigration: uint256
+        -owner: address
+    }
+
+    interface Oracle {
+        +requestPrice(marketId: uint256, eventData: string)
+    }
+
+    PredictionMarket --> OracleManager : uses
+    OracleManager --> Oracle : interacts
+    Migrations --|> PredictionMarket : manages deployment
+    Migrations --|> OracleManager : manages deployment
+
+    note right of PredictionMarket
+        Handles market creation, betting,
+        resolution, and rewards.
+    end note
+
+    note right of OracleManager
+        Interacts with UMA Oracle for
+        external event resolution.
+    end note
+
+    note right of Migrations
+        Tracks and manages deployment steps.
+    end note
+}
+@enduml

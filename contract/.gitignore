@@ -1,0 +1,119 @@
+# 💾 Node.js dependencies
+node_modules/
+npm-debug.log
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# 🔍 Environment variables
+.env
+.env.*
+
+# 🛠️ Hardhat build artifacts
+/artifacts
+/cache
+/hardhat.config.ts
+/hardhat.config.js
+
+# 🧪 Test & coverage reports
+/coverage
+/coverage.json
+/test-results
+
+# 🔐 Ethereum keys & secrets
+/keystore/
+/private_keys/
+/secret/
+/wallets/
+/keys/
+/*.pem
+
+# 🛠️ IDE / Editor specific
+.vscode/
+/.idea/
+/*.iml
+
+# 🚀 Build outputs
+/build/
+/dist/
+/out/
+/coverage/
+
+# 💻 OS-specific
+.DS_Store
+Thumbs.db
+
+# 🔮 TypeScript
+*.tsbuildinfo
+
+# 📦 Docker
+docker-compose.override.yml
+
+# 📷 Logs & debug files
+*.log
+*.log.*
+debug.log
+error.log
+*.pid
+*.seed
+*.pid.lock
+
+# 📖 Documentation build artifacts
+/docs/_build/
+
+# 🧠 Misc
+/.next/
+/.next/cache/
+/.eslintcache
+/.nuxt/
+/.nuxt/dist/
+/.trash/
+/tmp/
+/localchain/
+/ganache-data/
+/*.sqlite
+
+# 🐳 Docker files
+/docker-compose.override.yml
+/docker-compose.yml
+
+# 🌐 Web3 / Ethers.js cache
+/.openzeppelin/
+/.openzeppelin/
+/.cache/
+/.web3/
+
+# 🔍 MetaMask Snap Files
+.snap/
+
+# 🚀 Frontend build artifacts
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env
+
+# 🔄 Solidity build artifacts
+/contracts/node_modules/
+/contracts/artifacts/
+/contracts/cache/
+/contracts/.openzeppelin
+
+# ⚙️ ABI files (optional, if auto-generated)
+*.abi.json
+
+# 💡 Hardhat console history
+.hardhat_history
+
+# 📜 ABI & deployment files
+/deployments/
+/deployments/*.json
+
+# 🧠 Git configuration files
+.gitconfig
+.gitattributes
+
+# 🚀 Etherscan verification temp files
+/etherscan_temp/
+
+# 🔑 Sensitive JSON files
+/secrets.json
+/apiKeys.json

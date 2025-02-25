@@ -46,7 +46,7 @@ node scripts/oracle-interaction.js 0
 #
 ````
 Then proceed through these steps:
-Market Creation → 2. Bet Placement → 3. Oracle Request → 4. Market Resolution → 5. Claim Winnings → 6. Check Balance → 7. Mark Migration Complete → 8. Pause Contract.
+Market Creation → 2. Event Placement → 3. Oracle Request → 4. Market Resolution → 5. Claim Winnings → 6. Check Balance → 7. Mark Migration Complete → 8. Pause Contract.
 
 
 1️⃣ Create Market (createMarket) 🛠️
@@ -61,7 +61,7 @@ The end time must be at least 1 hour in the future.
 On success, the MarketCreated event is emitted.
 
 
-2️⃣ Place Bet (placeBet) 💸
+2️⃣ Place Event (placeBet) 💸
 🛎️ Any User
 
 🎯 Function Call

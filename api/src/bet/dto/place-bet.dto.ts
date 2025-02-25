@@ -29,7 +29,7 @@ export class PlaceBetDto {
 
     @ApiProperty({
         example: 100,
-        description: 'Bet amount (minimum: 1)',
+        description: 'Event amount (minimum: 1)',
         type: Number,
         minimum: 1,
     })

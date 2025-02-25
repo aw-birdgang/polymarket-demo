@@ -69,7 +69,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                 const SizedBox(height: 20),
                 if (isBettingOpen && !market.resolved) ...[
                   CustomButton(
-                    text: 'Bet on YES',
+                    text: 'Event on YES',
                     onPressed: () {
                       // ✅ BetStore 설정
                       betStore.selectMarket(market.id, true); // 🔥 수정: market.id 사용
@@ -83,7 +83,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                   ),
                   const SizedBox(height: 10),
                   CustomButton(
-                    text: 'Bet on NO',
+                    text: 'Event on NO',
                     onPressed: () {
                       betStore.selectMarket(market.id, false); // 🔥 수정: market.id 사용
                       Navigator.pushNamed(

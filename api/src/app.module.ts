@@ -11,6 +11,7 @@ import {WalletModule} from "./wallet/wallet.module";
 import {RedisModule} from "./redis/redis.module";
 import {BetModule} from "./bet/bet.module";
 import {UserModule} from './user/user.module';
+import {EventModule} from './event/event.module';
 
 
 // <database-block>
@@ -40,6 +41,7 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
     BetModule,
     WalletModule,
     UserModule,
+    EventModule,
   ],
 })
 export class AppModule {}

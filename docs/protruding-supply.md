@@ -15,7 +15,7 @@ This document analyzes how **the liquidity pool changes when 5 traders place bet
 
 ## 🎯 **2. 5 Traders Place Bets (Liquidity Pool Simulation)**  
 
-| Step | Trader | Bet Direction | Bet Amount | YES Pool After Bet | NO Pool After Bet | Liquidity Ratio (YES:NO) |
+| Step | Trader | Event Direction | Event Amount | YES Pool After Event | NO Pool After Event | Liquidity Ratio (YES:NO) |
 |---|---|---|---|---|---|---|
 | 1️⃣ | Bob | YES | $2,000 | **$7,000** | $5,000 | **58.3% : 41.7%** |
 | 2️⃣ | Charlie | NO | $3,000 | $7,000 | **$8,000** | **46.7% : 53.3%** |

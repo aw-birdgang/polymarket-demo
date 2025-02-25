@@ -55,7 +55,7 @@ class _BetPageState extends State<BetPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Place Your Bet'),
+        title: const Text('Place Your Event'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -73,7 +73,7 @@ class _BetPageState extends State<BetPage> {
               controller: _betAmountController,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
-                labelText: 'Enter Bet Amount (ETH)',
+                labelText: 'Enter Event Amount (ETH)',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -83,7 +83,7 @@ class _BetPageState extends State<BetPage> {
               transactionStore.isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : CustomButton(
-                text: 'Place Bet',
+                text: 'Place Event',
                 onPressed: () async {
                   final betAmount = double.tryParse(_betAmountController.text);
                   if (betAmount == null || betAmount <= 0) {
@@ -102,7 +102,7 @@ class _BetPageState extends State<BetPage> {
 
                   if (transactionStore.errorMessage == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Bet placed successfully!')),
+                      const SnackBar(content: Text('Event placed successfully!')),
                     );
                     Navigator.pop(context);
                   } else {

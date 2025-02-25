@@ -10,8 +10,8 @@
 3. Potential Reentrancy
 - nonReentrant applied to placeBet and claimWinnings.
 
-4. Unlimited Bet Sizes
-- Bet must be >0, preventing spam transactions.
+4. Unlimited Event Sizes
+- Event must be >0, preventing spam transactions.
 
 5. Question Length Validation
 - createMarket validates that questions are between 5 and 200 characters.

@@ -24,7 +24,7 @@ POST
 시장 결과 확정 (오라클 데이터 기반)
 
 
-✅ 2️⃣ 베팅 (Bet) 관련 API
+✅ 2️⃣ 베팅 (Event) 관련 API
 
 POST	
 /bet/place	

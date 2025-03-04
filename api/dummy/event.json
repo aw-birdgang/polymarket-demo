@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Will Kanye launch a coin in February?",
+    "description": "This event predicts if Kanye West will launch his own cryptocurrency by the end of February.",
+    "imageUrl": "https://example.com/kanye.jpg",
+    "volume": 23000000,
+    "chance": 0.20,
+    "isTrending": true
+  },
+  {
+    "title": "Trump ends Ukraine war in first 90 days?",
+    "description": "Predicting if Trump will negotiate an end to the Ukraine conflict within his first 90 days in office.",
+    "imageUrl": "https://example.com/trump-ukraine.jpg",
+    "volume": 19000000,
+    "chance": 0.31,
+    "isTrending": true
+  },
+  {
+    "title": "Who will Trump pardon in first 100 days?",
+    "description": "Predicting who Trump will pardon within the first 100 days of his term.",
+    "imageUrl": "https://example.com/trump-pardon.jpg",
+    "volume": 14000000,
+    "chance": 0.15,
+    "isTrending": false
+  },
+  {
+    "title": "Yoon out as president of South Korea before April?",
+    "description": "Will the current president of South Korea be out of office before April?",
+    "imageUrl": "https://example.com/yoon-korea.jpg",
+    "volume": 6000000,
+    "chance": 0.81,
+    "isTrending": true
+  },
+  {
+    "title": "Russia x Ukraine ceasefire in 2025?",
+    "description": "Predicting if Russia and Ukraine will reach a ceasefire agreement in 2025.",
+    "imageUrl": "https://example.com/russia-ukraine.jpg",
+    "volume": 3000000,
+    "chance": 0.73,
+    "isTrending": false
+  },
+  {
+    "title": "Which company has best AI model end of February?",
+    "description": "Comparing AI models from xAI, Anthropic, and OpenAI by the end of February.",
+    "imageUrl": "https://example.com/ai-models.jpg",
+    "volume": 4000000,
+    "chance": 0.84,
+    "isTrending": true
+  },
+  {
+    "title": "Trump declassifies Epstein list in first 100 days?",
+    "description": "Will Trump declassify the Epstein list within his first 100 days in office?",
+    "imageUrl": "https://example.com/epstein-list.jpg",
+    "volume": 1000000,
+    "chance": 0.61,
+    "isTrending": false
+  },
+  {
+    "title": "Gold missing from Fort Knox?",
+    "description": "Predicting if there will be a revelation about gold being missing from Fort Knox.",
+    "imageUrl": "https://example.com/gold-fort-knox.jpg",
+    "volume": 792000,
+    "chance": 0.19,
+    "isTrending": false
+  },
+  {
+    "title": "Ukraine agrees to give Trump rare earth metals before April?",
+    "description": "Will Ukraine agree to give Trump rare earth metals before April?",
+    "imageUrl": "https://example.com/ukraine-metals.jpg",
+    "volume": 514000,
+    "chance": 0.78,
+    "isTrending": true
+  },
+  {
+    "title": "Israel x Hamas ceasefire cancelled before April?",
+    "description": "Predicting if the ceasefire between Israel and Hamas will be cancelled before April.",
+    "imageUrl": "https://example.com/israel-hamas.jpg",
+    "volume": 314000,
+    "chance": 0.40,
+    "isTrending": false
+  }
+]

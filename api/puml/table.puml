@@ -1,0 +1,90 @@
+@startuml
+!define TABLE(x) class x << (T,#FFAAAA) >>
+!define PK <b><&key></b>
+!define FK <b><&foreign></b>
+
+TABLE(User) {
+    PK id: int
+    username: string
+    email: string
+    createdAt: datetime
+}
+
+TABLE(Event) {
+    PK id: int
+    title: string
+    description: text
+    isResolved: boolean
+    createdAt: datetime
+}
+
+TABLE(Market) {
+    PK id: int
+    question: string
+    type: enum('BINARY', 'MULTIPLE')  ' ✅ 마켓 유형 (Yes/No 또는 여러 선택지)
+    outcomes: jsonb  ' ✅ 다중 선택 시장의 가능한 결과 목록 (MULTIPLE)
+    yesOdds: decimal  ' ✅ 이진 선택 (BINARY) 시장의 Yes 배당률
+    noOdds: decimal  ' ✅ 이진 선택 (BINARY) 시장의 No 배당률
+    outcomeOdds: jsonb  ' ✅ 다중 선택 시장의 배당률 (MULTIPLE)
+    isResolved: boolean
+    resolvedOutcome: string  ' ✅ 확정된 결과 (YES/NO 또는 특정 후보)
+    openTime: datetime  ' ✅ 마켓이 열리는 시간
+    closeTime: datetime  ' ✅ 마켓이 마감되는 시간
+    createdAt: datetime
+    FK eventId: int
+}
+
+TABLE(Trade) {
+    PK id: int
+    FK userId: int
+    FK marketId: int
+    amount: decimal
+    tradeType: enum('BUY', 'SELL')
+    createdAt: datetime
+}
+
+TABLE(Bet) {
+    PK id: int
+    FK userId: int
+    FK marketId: int
+    betAmount: decimal
+    betOn: enum('YES', 'NO')
+    createdAt: datetime
+}
+
+TABLE(Comment) {
+    PK id: int
+    FK userId: int
+    FK marketId: int
+    content: text
+    createdAt: datetime
+}
+
+TABLE(Transaction) {
+    PK id: int
+    FK userId: int
+    FK marketId: int
+    amount: decimal
+    transactionType: enum('DEPOSIT', 'WITHDRAW')
+    createdAt: datetime
+}
+
+TABLE(Wallet) {
+    PK id: int
+    FK userId: int
+    balance: decimal
+    currency: string
+    updatedAt: datetime
+}
+
+' Relationships
+Event ||--|{ Market : has
+Market ||--|{ Comment : has
+Market ||--|{ Bet : has
+Market ||--|{ Trade : has
+User ||--|{ Bet : places
+User ||--|{ Trade : makes
+User ||--|{ Comment : writes
+User ||--|| Wallet : owns
+User ||--|{ Transaction : performs
+@enduml

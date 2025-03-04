@@ -1,11 +1,11 @@
-class Market {
+class Comment {
   String id;
   String question;
   DateTime endTime;
   bool resolved;
   bool outcome;
 
-  Market({
+  Comment({
     required this.id,
     required this.question,
     required this.endTime,
@@ -13,7 +13,7 @@ class Market {
     required this.outcome,
   });
 
-  factory Market.fromJson(Map<String, dynamic> json) {
+  factory Comment.fromJson(Map<String, dynamic> json) {
     return Market(
       id: json['id'] ?? '',  // 🔥 String 기본값
       question: json['question'] ?? 'No question available',  // 🔥 기본값 추가

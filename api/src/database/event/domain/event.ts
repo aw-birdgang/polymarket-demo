@@ -1,54 +1,29 @@
-import { ApiProperty } from "@nestjs/swagger";
-import {Expose, Transform} from "class-transformer";
+import {ApiProperty} from "@nestjs/swagger";
+import {Market} from "../../market/domain/market";
 
 export class Event {
     @ApiProperty({
         type: String,
-        description: '고유 식별자 (UUID 형식)',
+        description: '고유 아이디 (UUID 형식)',
         example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
     })
     id: string;
 
-    @ApiProperty({
-        type: String,
-        description: '이벤트 제목',
-        example: 'Will Kanye launch a coin in February?'
-    })
+    @ApiProperty({ description: '이벤트 제목', example: '2024년 미국 대선' })
     title: string;
 
-    @ApiProperty({
-        type: String,
-        description: '이벤트 상세 설명',
-        example: 'This event predicts if Kanye West will launch his own cryptocurrency by the end of February.'
-    })
+    @ApiProperty({ description: '이벤트 설명', example: '2024년 미국 대통령 선거의 승자를 예측하는 시장입니다.' })
     description: string;
 
-    @ApiProperty({
-        type: String,
-        description: '이벤트 썸네일 URL',
-        example: 'https://example.com/image.jpg'
-    })
-    imageUrl: string;
+    @ApiProperty({ description: '이벤트가 종료되었는지 여부', example: false })
+    isResolved: boolean;
 
-    @ApiProperty({
-        type: Number,
-        description: '거래량 (예: $23m Vol.)',
-        example: 23000000
-    })
-    @Expose()
-    volume: number;
+    @ApiProperty({ description: '이벤트 생성 시간', example: '2025-03-04T12:00:00Z' })
+    createdAt: Date;
 
-    @ApiProperty({
-        type: Number,
-        description: '예측 확률 (0 ~ 1 사이의 실수)',
-        example: 0.20
-    })
-    chance: number;
+    @ApiProperty({ description: '이벤트 마지막 업데이트 시간', example: '2025-03-04T15:00:00Z' })
+    updatedAt: Date;
 
-    @ApiProperty({
-        type: Boolean,
-        description: '현재 인기 여부 (true: 인기, false: 비인기)',
-        example: true
-    })
-    isTrending: boolean;
+    @ApiProperty({ description: '이 이벤트에 속한 마켓 목록', type: () => [Market] })
+    markets: Market[];
 }

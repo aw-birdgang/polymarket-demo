@@ -65,7 +65,7 @@ abstract class _MarketStore with Store {
     });
   }
 
-  /// 🔍 2️⃣ 특정 Market 상세 정보 가져오기
+  /// 🔍 2️⃣ 특정 Comment 상세 정보 가져오기
   @action
   Future<void> fetchMarketDetails(String marketId) async {
     isLoading = true;
@@ -84,7 +84,7 @@ abstract class _MarketStore with Store {
     return markets.firstWhereOrNull((market) => market.id == marketId);
   }
 
-  /// 🔍 4️⃣ Market 선택
+  /// 🔍 4️⃣ Comment 선택
   @action
   void selectMarket(String marketId) {
     selectedMarket = getMarketById(marketId);

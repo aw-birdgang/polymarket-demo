@@ -1,0 +1,27 @@
+[
+  {
+    "userId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "eventId": "e1f2g3h4-i5j6-7890-abcd-ef1234567890",
+    "content": "This is the first comment for testing."
+  },
+  {
+    "userId": "b2c3d4e5-f6g7-8901-abcd-ef1234567890",
+    "eventId": "e1f2g3h4-i5j6-7890-abcd-ef1234567890",
+    "content": "Another insightful comment on this event."
+  },
+  {
+    "userId": "c3d4e5f6-g7h8-9012-abcd-ef1234567890",
+    "eventId": "e1f2g3h4-i5j6-7890-abcd-ef1234567890",
+    "content": "I totally agree with the previous comment!"
+  },
+  {
+    "userId": "d4e5f6g7-h8i9-0123-abcd-ef1234567890",
+    "eventId": "e1f2g3h4-i5j6-7890-abcd-ef1234567890",
+    "content": "Interesting point of view. I have a different opinion."
+  },
+  {
+    "userId": "e5f6g7h8-i9j0-1234-abcd-ef1234567890",
+    "eventId": "e1f2g3h4-i5j6-7890-abcd-ef1234567890",
+    "content": "This is very informative. Thanks for sharing!"
+  }
+]

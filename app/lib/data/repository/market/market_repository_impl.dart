@@ -24,7 +24,7 @@ class MarketRepositoryImpl extends MarketRepository {
   // constructor
   MarketRepositoryImpl(this._marketApi, this._marketDataSource);
 
-  // Market: ---------------------------------------------------------------------
+  // Comment: ---------------------------------------------------------------------
   @override
   Future<MarketList> getMarkets() async {
     return await _marketApi.getMarkets().then((marketApi) {

@@ -34,14 +34,20 @@ export class EventRelationalRepository implements EventRepository {
   /******************************************************************
    * *****************************************************************/
 
-  async findOneWithWhere(
-    where: FindOptionsWhere<EventEntity>
-  ): Promise<NullableType<Event>> {
-    this.logger.log(`findOneWithWhere >> where: ${JSON.stringify(where)}`);
-    const entity = await this.eventRepository.findOne({ where });
-    return entity ? EventMapper.toDomain(entity) : null;
-  }
 
+  async findOneWithWhere(
+      where: FindOptionsWhere<Event>
+  ): Promise<Event> {
+      this.logger.log(`findOneWithWhere >> where: ${JSON.stringify(where)}`);
+      const whereConditions: FindOptionsWhere<EventEntity> = {
+          ...where,
+          markets: where.markets
+              ? (where.markets as any).map((market) => ({ id: market.id }))
+              : undefined, // ✅ markets 필드를 올바르게 변환
+      };
+      const entity = await this.eventRepository.findOne({ where: whereConditions });
+      return entity ? EventMapper.toDomain(entity) : null;
+  }
 
   async findWithWhere({
     sortOptions,

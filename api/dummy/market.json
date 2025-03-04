@@ -1,0 +1,95 @@
+[
+  {
+    "title": "Cryptocurrency Predictions",
+    "description": "Predictions related to cryptocurrency events and launches.",
+    "endTime": "2025-03-01T00:00:00.000Z",
+    "resolved": false,
+    "outcome": null,
+    "events": [
+      {
+        "title": "Will Kanye launch a coin in February?",
+        "description": "This event predicts if Kanye West will launch his own cryptocurrency by the end of February.",
+        "imageUrl": "https://example.com/kanye.jpg",
+        "volume": 23000000,
+        "chance": 0.20,
+        "isTrending": true
+      }
+    ]
+  },
+  {
+    "title": "US Politics 2025",
+    "description": "Predictions related to US politics in 2025.",
+    "endTime": "2025-04-01T00:00:00.000Z",
+    "resolved": false,
+    "outcome": null,
+    "events": [
+      {
+        "title": "Trump ends Ukraine war in first 90 days?",
+        "description": "Predicting if Trump will negotiate an end to the Ukraine conflict within his first 90 days in office.",
+        "imageUrl": "https://example.com/trump-ukraine.jpg",
+        "volume": 19000000,
+        "chance": 0.31,
+        "isTrending": true
+      },
+      {
+        "title": "Who will Trump pardon in first 100 days?",
+        "description": "Predicting who Trump will pardon within the first 100 days of his term.",
+        "imageUrl": "https://example.com/trump-pardon.jpg",
+        "volume": 14000000,
+        "chance": 0.15,
+        "isTrending": false
+      }
+    ]
+  },
+  {
+    "title": "South Korea Politics",
+    "description": "Predictions about political events in South Korea.",
+    "endTime": "2025-04-01T00:00:00.000Z",
+    "resolved": false,
+    "outcome": null,
+    "events": [
+      {
+        "title": "Yoon out as president of South Korea before April?",
+        "description": "Will the current president of South Korea be out of office before April?",
+        "imageUrl": "https://example.com/yoon-korea.jpg",
+        "volume": 6000000,
+        "chance": 0.81,
+        "isTrending": true
+      }
+    ]
+  },
+  {
+    "title": "Russia-Ukraine Conflict",
+    "description": "Predictions related to the Russia-Ukraine conflict.",
+    "endTime": "2025-12-31T00:00:00.000Z",
+    "resolved": false,
+    "outcome": null,
+    "events": [
+      {
+        "title": "Russia x Ukraine ceasefire in 2025?",
+        "description": "Predicting if Russia and Ukraine will reach a ceasefire agreement in 2025.",
+        "imageUrl": "https://example.com/russia-ukraine.jpg",
+        "volume": 3000000,
+        "chance": 0.73,
+        "isTrending": false
+      }
+    ]
+  },
+  {
+    "title": "Technology & AI",
+    "description": "Predictions about technology and AI developments.",
+    "endTime": "2025-02-28T00:00:00.000Z",
+    "resolved": false,
+    "outcome": null,
+    "events": [
+      {
+        "title": "Which company has best AI model end of February?",
+        "description": "Comparing AI models from xAI, Anthropic, and OpenAI by the end of February.",
+        "imageUrl": "https://example.com/ai-models.jpg",
+        "volume": 4000000,
+        "chance": 0.84,
+        "isTrending": true
+      }
+    ]
+  }
+]

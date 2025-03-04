@@ -3,6 +3,7 @@ import {NullableType} from "../../../../common/utils/types/nullable.type";
 import {DeepPartial, FindOptionsWhere} from "typeorm";
 import {Bet} from "../../domain/bet";
 import {FilterBetDto, SortBetDto} from "../../dto/query-bet.dto";
+import {BetEntity} from "./relational/entities/bet.entity";
 
 export abstract class BetRepository {
   abstract create(
@@ -40,9 +41,17 @@ export abstract class BetRepository {
   }): Promise<Bet[]>;
 
 
-  abstract findOneWithWhere(
-    where: FindOptionsWhere<Bet>
-  ): Promise<Bet>;
+  abstract findOneWithWhere({
+    filterOptions,
+    sortOptions,
+    whereConditions,
+    relations,
+  }: {
+    filterOptions?: FilterBetDto | null;
+    sortOptions?: SortBetDto[] | null;
+    whereConditions?: FindOptionsWhere<BetEntity>;
+    relations?: string[];
+  }): Promise<Bet>;
 
   abstract findManyWithWhereAndPagination({
     filterOptions,

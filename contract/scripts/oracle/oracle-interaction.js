@@ -95,11 +95,11 @@ main().then(() => console.log("🎯 Oracle interaction completed!"))
  *
  * 🏛️ Current Oracle Address: 0x43EAAAaE78B6CA996A6f9eCF04d021e8af17db43
  *
- * 🚀 Sending Oracle request for Market ID: 0
+ * 🚀 Sending Oracle request for Comment ID: 0
  * ✅ Oracle request sent! Tx hash: 0x727112f9f44ce569fb8f297b2841d7312fa5699d15740400d344971bc581fc49
  * 🔄 Request pending status: 🟢 Yes
  *
- * 🧪 Simulating Oracle response for Market ID: 0
+ * 🧪 Simulating Oracle response for Comment ID: 0
  * ✅ Oracle response received! Tx hash: 0x99577da88d02bb29711be3fdb0e6c3d7e4ac96ccbc86a6caf3771e4cf5861e65
  * 🏛️ Updated Oracle Address: 0x43EAAAaE78B6CA996A6f9eCF04d021e8af17db43
  * 🎯 Oracle interaction completed!

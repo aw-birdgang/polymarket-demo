@@ -50,6 +50,6 @@ resolveMarket(0);
  * node scripts/market/resolve-market.js
  *
  * ⚖️ Resolving market ID: 0
- * ✅ Market resolved! TX: 0xe181252bbd09391ae28df53d197d91124799c852deb2bd0354091c1df22bf44d
- * 🎯 Market resolved successfully!
+ * ✅ Comment resolved! TX: 0xe181252bbd09391ae28df53d197d91124799c852deb2bd0354091c1df22bf44d
+ * 🎯 Comment resolved successfully!
  */

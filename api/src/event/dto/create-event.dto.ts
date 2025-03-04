@@ -1,5 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsNumber, IsBoolean, IsOptional, IsUrl, Min, Max } from 'class-validator';
+import { ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsString, IsNumber, IsBoolean, IsUrl, Min, Max } from 'class-validator';
 
 export class CreateEventDto {
     @ApiProperty({
@@ -15,8 +15,7 @@ export class CreateEventDto {
         example: 'This event predicts if Kanye West will launch his own cryptocurrency by the end of February.',
     })
     @IsString()
-    @IsOptional()
-    description?: string;
+    description: string;
 
     @ApiProperty({
         description: '이벤트 썸네일 이미지 URL',
@@ -48,6 +47,21 @@ export class CreateEventDto {
         example: true,
     })
     @IsBoolean()
-    @IsOptional()
-    isTrending?: boolean;
+    isTrending: boolean;
+
+    @ApiProperty({
+        description: '소속된 Comment 의 ID (UUID 형식)',
+        example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+    })
+    @IsString()
+    @IsNotEmpty()
+    marketId: string;
+
+    @ApiProperty({
+        description: '결과 유형 (0: Yes/No, 1: Multiple Choice)',
+        example: 0,
+    })
+    @IsNumber()
+    @IsNotEmpty()
+    outcomeType: number;
 }

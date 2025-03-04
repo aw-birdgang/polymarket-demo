@@ -21,7 +21,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
   @override
   void initState() {
     super.initState();
-    // 📊 Market 정보 불러오기
+    // 📊 Comment 정보 불러오기
     final marketStore = context.read<MarketStore>();
     marketStore.selectMarket(widget.marketId.toString()); // 🔥 수정: int → String
   }
@@ -33,7 +33,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Market Details'),
+        title: const Text('Comment Details'),
       ),
       body: Observer(
         builder: (_) {
@@ -44,9 +44,9 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
             return const Center(child: CircularProgressIndicator());
           }
 
-          // 📉 Market 데이터가 없을 때
+          // 📉 Comment 데이터가 없을 때
           if (market == null) {
-            return const Center(child: Text('Market not found.'));
+            return const Center(child: Text('Comment not found.'));
           }
 
           // ⏰ 마켓 종료 시간 및 상태 확인
@@ -95,7 +95,7 @@ class _MarketDetailPageState extends State<MarketDetailPage> {
                   ),
                 ] else ...[
                   const Text(
-                    'Betting is closed or Market is resolved.',
+                    'Betting is closed or Comment is resolved.',
                     style: TextStyle(color: Colors.red),
                   ),
                 ],

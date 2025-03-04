@@ -19,7 +19,7 @@ export class MarketService {
         const clonedPayload = {
             ...plainToInstance(Market, createMarketDto),
         };
-        this.logger.log(`createMarket.question :: ${createMarketDto.question}, createMarketDto.endTime:: ${createMarketDto.endTime}`);
+        this.logger.log(`createMarketDto.question :: ${createMarketDto.question}, createMarketDto.closeTime:: ${createMarketDto.closeTime}`);
         return await this.marketRepository.create(clonedPayload);
     }
 
@@ -48,7 +48,7 @@ export class MarketService {
         if (!market) {
             throw new Error('Liquidity not found');
         }
-        market.resolved = true;
+        market.isResolved = true;
         const clonedPayload = { ...market };
         return await this.marketRepository.update(id, clonedPayload);
     }

@@ -1,27 +1,18 @@
-import { IsNotEmpty, IsString, IsNumber, IsBoolean, IsOptional, IsUrl } from 'class-validator';
+import {IsBoolean, IsOptional, IsString} from 'class-validator';
+import {ApiProperty, ApiPropertyOptional} from "@nestjs/swagger";
 
 export class CreateEventDto {
+    @ApiProperty({ description: '이벤트 제목', example: 'Will Trump be re-elected in 2024?' })
     @IsString()
-    @IsNotEmpty()
     title: string;
 
-    @IsString()
+    @ApiPropertyOptional({ description: '이벤트 설명', example: 'Predict if Donald Trump will win the 2024 U.S. presidential election.' })
     @IsOptional()
+    @IsString()
     description?: string;
 
-    @IsUrl()
-    @IsNotEmpty()
-    imageUrl: string;
-
-    @IsString()
-    @IsNotEmpty()
-    volume: string;
-
-    @IsNumber()
-    @IsNotEmpty()
-    chance: number;
-
-    @IsBoolean()
+    @ApiPropertyOptional({ description: '이벤트가 종료되었는지 여부', example: false })
     @IsOptional()
-    isTrending?: boolean;
+    @IsBoolean()
+    isResolved?: boolean;
 }

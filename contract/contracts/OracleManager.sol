@@ -83,7 +83,7 @@ contract OracleManager is Ownable, ReentrancyGuard {
 
     /**
      * @dev **TESTING ONLY:** Resets Oracle request manually.
-     * @param marketId Market ID to reset.
+     * @param marketId Comment ID to reset.
      */
     function resetOracleRequest(uint256 marketId) external onlyOwner {
         require(oracleRequests[marketId], "No request to reset");

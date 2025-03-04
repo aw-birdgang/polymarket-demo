@@ -1,10 +1,10 @@
-import { Injectable, Logger, NotFoundException } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
+import {Injectable, Logger, NotFoundException} from "@nestjs/common";
+import {InjectRepository} from "@nestjs/typeorm";
 
-import { FindOptionsWhere, Repository } from "typeorm";
+import {FindOptionsWhere, Repository} from "typeorm";
 import {BetEntity} from "../entities/bet.entity";
-import { BetMapper } from "../mappers/bet.mapper";
-import { BetRepository } from "../../bet.repository";
+import {BetMapper} from "../mappers/bet.mapper";
+import {BetRepository} from "../../bet.repository";
 import {Bet} from "../../../../domain/bet";
 import {FilterBetDto, SortBetDto} from "../../../../dto/query-bet.dto";
 import {NullableType} from "../../../../../../common/utils/types/nullable.type";
@@ -35,13 +35,32 @@ export class BetRelationalRepository implements BetRepository {
   /******************************************************************
    * *****************************************************************/
 
-  async findOneWithWhere(
-    where: FindOptionsWhere<BetEntity>
-  ): Promise<NullableType<Bet>> {
-    this.logger.log(`findOneWithWhere >> where: ${JSON.stringify(where)}`);
-    const entity = await this.betRepository.findOne({ where });
-    return entity ? BetMapper.toDomain(entity) : null;
-  }
+    async findOneWithWhere({
+       filterOptions,
+       sortOptions,
+       whereConditions,
+       relations,
+    }: {
+        filterOptions?: FilterBetDto | null;
+        sortOptions?: SortBetDto[] | null;
+        whereConditions?: FindOptionsWhere<BetEntity>;
+        relations?: string[];
+    }): Promise<NullableType<Bet>> {
+        const where: FindOptionsWhere<BetEntity> = whereConditions || {};
+        const order = sortOptions && Array.isArray(sortOptions) ? sortOptions.reduce(
+            (accumulator, sort) => ({
+                ...accumulator,
+                [sort.orderBy]: sort.order,
+            }),
+            {},
+        ) : {};
+        const entity = await this.betRepository.findOne({
+            where,
+            order,
+            relations,
+        });
+        return entity ? BetMapper.toDomain(entity) : null;
+    }
 
 
   async findWithWhere({

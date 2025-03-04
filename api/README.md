@@ -64,6 +64,17 @@ GET
 /wallet/balance/:userId	
 특정 사용자의 지갑 잔액 조회
 
+
+
+Event 기본 정보
+Price 및 확률 차트
+Order Book (주문 현황)
+Trade History (거래 기록)
+User Participation (유저 참여 정보)
+Bet/Trade 액션 (거래 및 베팅)
+Comment 및 Discussion (댓글 및 토론)
+
+
 ```
 
 

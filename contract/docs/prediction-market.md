@@ -1,7 +1,7 @@
 
 ## 1️⃣ 🔐 Security Improvements
 ```bash
-1. Unchecked Market ID
+1. Unchecked Comment ID
 - Added require(_marketId < marketCount) to prevent invalid market access.
 
 2. Direct Balance Calculation
@@ -17,13 +17,13 @@
 - createMarket validates that questions are between 5 and 200 characters.
 
 
-🔒 Example Fix: Invalid Market Access
+🔒 Example Fix: Invalid Comment Access
 ❌ Before:
-Market storage market = markets[_marketId];
+Comment storage market = markets[_marketId];
 
 ✅ After:
-require(_marketId < marketCount, "Market does not exist");
-Market storage market = markets[_marketId];
+require(_marketId < marketCount, "Comment does not exist");
+Comment storage market = markets[_marketId];
 
 🔑 Why?
 Without this check, attackers could pass an invalid marketId and cause undefined behavior.

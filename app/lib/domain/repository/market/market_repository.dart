@@ -3,7 +3,7 @@ import 'dart:async';
 import '../../entry/market/market.dart';
 import '../../entry/market/market_list.dart';
 
-abstract class MarketRepository {
+abstract class CommentRepository {
   Future<MarketList> getMarkets();
   Future<List<Market>> findMarketById(int id);
   Future<int> insert(Market market);

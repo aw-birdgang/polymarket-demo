@@ -3,8 +3,6 @@ import {NullableType} from "../../../../common/utils/types/nullable.type";
 import {DeepPartial, FindOptionsWhere} from "typeorm";
 import {Event} from "../../domain/event";
 import {FilterEventDto, SortEventDto} from "../../dto/query-event.dto";
-import {FilterMarketDto, SortMarketDto} from "../../../market/dto/query-market.dto";
-import {Market} from "../../../market/domain/market";
 
 export abstract class EventRepository {
   abstract create(

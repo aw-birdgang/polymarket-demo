@@ -67,7 +67,7 @@ abstract class _TransactionStore with Store {
     errorMessage = null;
   }
 
-  // 🎲 1️⃣ Market 생성 트랜잭션
+  // 🎲 1️⃣ Comment 생성 트랜잭션
   @action
   Future<void> createMarket(String question, int endTime) async {
     isLoading = true;

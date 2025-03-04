@@ -31,7 +31,7 @@ async function fetchMarketInfo(marketId) {
         const marketInfo = await predictionMarket.getMarketInfo(marketId);
 
         // 📊 출력
-        console.log("\n📊 Market Info:");
+        console.log("\n📊 Comment Info:");
         console.log(`- ❓ Question: ${marketInfo[0]}`);
         console.log(`- 🕒 End Time: ${new Date(Number(marketInfo[1]) * 1000).toLocaleString()}`);
         console.log(`- 🎯 Outcome: ${getOutcomeName(marketInfo[2])}`);
@@ -64,9 +64,9 @@ fetchMarketInfo(marketId);
 /**
  * $ node scripts/get-market-info.js 0
  *
- * 🔍 Fetching info for Market ID: 0
+ * 🔍 Fetching info for Comment ID: 0
  *
- * 📊 Market Info:
+ * 📊 Comment Info:
  * - ❓ Question: Will BTC hit $100k by 2025?
  * - 🕒 End Time: 2/18/2025, 9:16:32 PM
  * - 🎯 Outcome: Undecided

@@ -3,7 +3,6 @@ import {PlaceBetDto} from './dto/place-bet.dto';
 import {BetRepository} from "../database/bet/infrastructure/persistence/bet.repository";
 import {FindOptionsWhere} from "typeorm";
 import {Bet} from "../database/bet/domain/bet";
-import {BetEntity} from "../database/bet/infrastructure/persistence/relational/entities/bet.entity";
 import {plainToInstance} from "class-transformer";
 
 @Injectable()
@@ -23,7 +22,7 @@ export class BetService {
     }
 
     async getBetsByMarketId(marketId: string) {
-        const whereConditions: FindOptionsWhere<BetEntity> = {};
+        const whereConditions: FindOptionsWhere<Bet> = {};
         this.logger.log(`getBetsByMarketId >> marketId: ${marketId}`);
         if (marketId) {
             whereConditions.marketId = marketId;
@@ -35,7 +34,7 @@ export class BetService {
     }
 
     async getBetsByUserId(userId: string): Promise<Bet[]> {
-        const whereConditions: FindOptionsWhere<BetEntity> = {};
+        const whereConditions: FindOptionsWhere<Bet> = {};
         this.logger.log(`getBetsByUserId >> userId: ${userId}`);
         if (userId) {
             whereConditions.userId = userId;

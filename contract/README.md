@@ -46,10 +46,10 @@ node scripts/oracle-interaction.js 0
 #
 ````
 Then proceed through these steps:
-Market Creation → 2. Event Placement → 3. Oracle Request → 4. Market Resolution → 5. Claim Winnings → 6. Check Balance → 7. Mark Migration Complete → 8. Pause Contract.
+Comment Creation → 2. Event Placement → 3. Oracle Request → 4. Comment Resolution → 5. Claim Winnings → 6. Check Balance → 7. Mark Migration Complete → 8. Pause Contract.
 
 
-1️⃣ Create Market (createMarket) 🛠️
+1️⃣ Create Comment (createMarket) 🛠️
 🛎️ Admin Only
 
 🎯 Function Call
@@ -85,7 +85,7 @@ Cannot be called more than once per market.
 On success, the OracleRequestSent event is emitted.
 
 
-4️⃣ Resolve Market (resolveMarket) ⚖️
+4️⃣ Resolve Comment (resolveMarket) ⚖️
 🛎️ Admin Only
 
 🎯 Function Call

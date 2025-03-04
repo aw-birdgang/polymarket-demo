@@ -12,6 +12,10 @@ import {RedisModule} from "./redis/redis.module";
 import {BetModule} from "./bet/bet.module";
 import {UserModule} from './user/user.module';
 import {EventModule} from './event/event.module';
+import {TradeModule} from './trade/trade.module';
+import {CommentModule} from './comment/comment.module';
+import {MarketHistoryModule} from './market-history/market-history.module';
+import {SchedulerModule} from "./scheduler/scheduler.module";
 
 
 // <database-block>
@@ -37,11 +41,15 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
     }),
     infrastructureDatabaseModule,
     RedisModule,
+    UserModule,
     MarketModule,
     BetModule,
-    WalletModule,
-    UserModule,
     EventModule,
+    CommentModule,
+    TradeModule,
+    WalletModule,
+    MarketHistoryModule,
+    SchedulerModule,
   ],
 })
 export class AppModule {}

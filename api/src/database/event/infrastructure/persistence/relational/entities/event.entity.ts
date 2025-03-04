@@ -1,10 +1,5 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import {Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn,} from 'typeorm';
+import {MarketEntity} from "../../../../../market/infrastructure/persistence/relational/entities/market.entity";
 
 @Entity('events')
 export class EventEntity {
@@ -14,24 +9,18 @@ export class EventEntity {
   @Column()
   title: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   description: string;
 
-  @Column()
-  imageUrl: string;
-
-  @Column({ type: 'int' })
-  volume: number;
-
-  @Column('float')
-  chance: number;
-
   @Column({ default: false })
-  isTrending: boolean;
+  isResolved: boolean;
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(() => MarketEntity, (market) => market.event, { cascade: true })
+  markets: MarketEntity[];
 }

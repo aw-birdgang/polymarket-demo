@@ -40,7 +40,7 @@ export class EventService {
         });
     }
 
-    async getEventById(id: string): Promise<NullableType<Event>> {
+    async getEventById(id: Event['id']): Promise<NullableType<Event>> {
         return this.eventRepository.findById(id);
     }
 

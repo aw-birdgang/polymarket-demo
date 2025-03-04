@@ -29,7 +29,7 @@ class _BetPageState extends State<BetPage> {
   @override
   void initState() {
     super.initState();
-    // 📊 Market 정보 불러오기
+    // 📊 Comment 정보 불러오기
     final marketStore = context.read<MarketStore>();
     marketStore.selectMarket(widget.marketId);
   }
@@ -45,10 +45,10 @@ class _BetPageState extends State<BetPage> {
     if (market == null) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Market Not Found'),
+          title: const Text('Comment Not Found'),
         ),
         body: const Center(
-          child: Text('Market not found or has been removed.'),
+          child: Text('Comment not found or has been removed.'),
         ),
       );
     }

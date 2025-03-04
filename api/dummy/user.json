@@ -1,0 +1,32 @@
+[
+  {
+    "id": "f9d8d03f-b976-4a46-bd3e-45a981f1fb70",
+    "username": "john_doe",
+    "password": "password123",
+    "email": "john.doe@example.com"
+  },
+  {
+    "id": "a2b3c4d5-e6f7-8901-2345-6789abcdef01",
+    "username": "jane_smith",
+    "password": "securePass456",
+    "email": "jane.smith@example.com"
+  },
+  {
+    "id": "b3c4d5e6-f7a8-9012-3456-7890bcdef012",
+    "username": "michael_brown",
+    "password": "michael789",
+    "email": "michael.brown@example.com"
+  },
+  {
+    "id": "c4d5e6f7-a8b9-0123-4567-8901cdef1234",
+    "username": "susan_lee",
+    "password": "susan456",
+    "email": "susan.lee@example.com"
+  },
+  {
+    "id": "d5e6f7a8-b9c0-1234-5678-9012def23456",
+    "username": "chris_johnson",
+    "password": "chris123",
+    "email": "chris.johnson@example.com"
+  }
+]

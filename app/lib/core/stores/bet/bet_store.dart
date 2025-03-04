@@ -3,11 +3,11 @@ import 'package:mobx/mobx.dart';
 part 'bet_store.g.dart';
 
 /// 🎲 BetStore
-/// 📌 선택된 Market ID와 Event Type (YES/NO)을 관리하는 MobX Store
+/// 📌 선택된 Comment ID와 Event Type (YES/NO)을 관리하는 MobX Store
 class BetStore = _BetStore with _$BetStore;
 
 abstract class _BetStore with Store {
-  // 🔖 선택된 Market ID
+  // 🔖 선택된 Comment ID
   @observable
   String? selectedMarketId;
 
@@ -15,7 +15,7 @@ abstract class _BetStore with Store {
   @observable
   bool isYesBet = true;
 
-  // ✅ Market 선택 및 Event Type 설정
+  // ✅ Comment 선택 및 Event Type 설정
   @action
   void selectMarket(String marketId, bool isYes) {
     selectedMarketId = marketId;
@@ -37,7 +37,7 @@ abstract class _BetStore with Store {
   @computed
   bool get isNoSelected => !isYesBet;
 
-  // 🔎 선택된 Market ID 확인
+  // 🔎 선택된 Comment ID 확인
   @computed
   bool get hasSelectedMarket => selectedMarketId != null;
 }

@@ -7,9 +7,9 @@ import '../../core/utils/dio/dio_exception_util.dart';
 import '../../domain/entry/market/market.dart';
 
 
-/// 🔥 MarketRepository
-/// 📌 Market 데이터를 가져오는 역할 (블록체인 또는 서버 연동)
-class MarketRepository {
+/// 🔥 CommentRepository
+/// 📌 Comment 데이터를 가져오는 역할 (블록체인 또는 서버 연동)
+class CommentRepository {
   // 🔑 환경 변수 가져오기
   final String infuraKey = dotenv.env['INFURA_KEY']!;
   final String contractAddress = dotenv.env['PREDICTION_MARKET_ADDRESS']!;
@@ -29,7 +29,7 @@ class MarketRepository {
   ''';
 
   /// 📦 Constructor
-  MarketRepository() {
+  CommentRepository() {
     _client = Web3Client(
       'https://sepolia.infura.io/v3/$infuraKey',
       Dio() as Client,
@@ -44,19 +44,19 @@ class MarketRepository {
     _getMarketInfo = _contract.function('getMarketInfo');
   }
 
-  /// 🔍 전체 Market 정보 가져오기
+  /// 🔍 전체 Comment 정보 가져오기
   Future<List<Market>> fetchMarkets() async {
     try {
-      // 🔹 1️⃣ Market Count 가져오기
+      // 🔹 1️⃣ Comment Count 가져오기
       final countResult = await _client.call(
         contract: _contract,
         function: _marketCount,
         params: [],
       );
       final count = (countResult.first as BigInt).toInt();
-      print('🔍 Total Market Count: $count');
+      print('🔍 Total Comment Count: $count');
 
-      // 🔹 2️⃣ Market 정보 가져오기
+      // 🔹 2️⃣ Comment 정보 가져오기
       final List<Market> marketList = [];
       for (int i = 0; i < count; i++) {
         final info = await _client.call(
@@ -65,7 +65,7 @@ class MarketRepository {
           params: [BigInt.from(i)],
         );
 
-        // 🔸 3️⃣ Market 모델에 맞게 데이터 매핑
+        // 🔸 3️⃣ Comment 모델에 맞게 데이터 매핑
         final market = Market(
           id: i.toString(), // 수정: id를 String으로 변환
           question: info[0] as String,
@@ -77,7 +77,7 @@ class MarketRepository {
         );
 
         marketList.add(market);
-        print('✅ Loaded Market: ${market.question}');
+        print('✅ Loaded Comment: ${market.question}');
       }
 
       return marketList;

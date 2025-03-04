@@ -4,6 +4,7 @@ import {MarketController} from './market.controller';
 import {
     RelationalMarketPersistenceModule
 } from "../database/market/infrastructure/persistence/relational/relational-persistence.module";
+import {EventModule} from "../event/event.module";
 
 // <database-block>
 const infrastructurePersistenceModule = RelationalMarketPersistenceModule;
@@ -12,6 +13,7 @@ const infrastructurePersistenceModule = RelationalMarketPersistenceModule;
 @Module({
     imports: [
         infrastructurePersistenceModule,
+        EventModule,
     ],
     controllers: [MarketController],
     providers: [

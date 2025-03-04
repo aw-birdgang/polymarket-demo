@@ -3,8 +3,8 @@ import {IsDateString, IsNumber, IsString} from 'class-validator';
 
 export class CreateMarketHistoryDto {
     @ApiProperty({ description: '마켓 ID', example: 101 })
-    @IsNumber()
-    marketId: number;
+    @IsString()
+    marketId: string;
 
     @ApiProperty({ description: '결과(팀, 선수 등)', example: 'Boston Bruins' })
     @IsString()
@@ -14,7 +14,7 @@ export class CreateMarketHistoryDto {
     @IsNumber()
     probability: number;
 
-    @ApiProperty({ description: '데이터가 기록된 시간', example: '2024-03-04T12:00:00Z' })
+    @ApiProperty({ description: '데이터 가 기록된 시간', example: '2024-03-04T12:00:00Z' })
     @IsDateString()
     timestamp: string;
 }

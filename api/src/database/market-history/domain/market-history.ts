@@ -4,8 +4,8 @@ export class MarketHistory {
     @ApiProperty({ description: '기록 ID', example: 1 })
     id: number;
 
-    @ApiProperty({ description: '기록된 마켓 ID', example: 101 })
-    marketId: number;
+    @ApiProperty({ description: '기록된 마켓 ID', example: '123e4567-e89b-12d3-a456-426614174000' })
+    marketId: string;
 
     @ApiProperty({ description: '결과(팀, 선수 등)', example: 'Boston Bruins' })
     outcome: string;

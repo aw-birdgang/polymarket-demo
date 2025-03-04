@@ -21,10 +21,7 @@ export class MarketHistoryRelationalRepository implements MarketHistoryRepositor
   private readonly logger = new Logger(MarketHistoryRelationalRepository.name);
 
   async create(data: MarketHistory): Promise<MarketHistory> {
-    this.logger.log(`create>> data.toString ::${data.toString()}`)
     const persistenceModel = MarketHistoryMapper.toPersistence(data);
-    this.logger.log(`create>> persistenceModel.toString ::${persistenceModel.toString()}`)
-
     const newEntity = await this.marketHistoryRepository.save(
       this.marketHistoryRepository.create(persistenceModel),
     );

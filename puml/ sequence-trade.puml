@@ -1,0 +1,28 @@
+@startuml
+title Polymarket Trade Process
+
+actor User
+participant "Polymarket Frontend" as FE
+participant "Smart Contract" as SC
+participant "Blockchain" as BC
+
+User -> FE: Connect Wallet (MetaMask, WalletConnect)
+FE -> SC: Validate User Wallet & USDC Balance
+SC -> FE: Wallet Verified
+
+User -> FE: Select Market & Outcome
+FE -> SC: Fetch Market Data & Outcome Prices
+SC -> FE: Return Market Data
+
+User -> FE: Choose Buy/Sell & Enter Trade Amount
+FE -> SC: Validate Trade Parameters
+SC -> FE: Trade Validation Successful
+
+User -> FE: Confirm & Approve Transaction
+FE -> SC: Send Trade Request to Smart Contract
+SC -> BC: Execute Trade on Blockchain
+BC -> SC: Trade Successful
+SC -> FE: Confirm Trade Execution
+
+FE -> User: Display Trade Confirmation & Updated Balance
+@enduml

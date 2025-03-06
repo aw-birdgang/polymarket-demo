@@ -1,0 +1,28 @@
+@startuml
+title Conditional Tokens Framework Flow in Polymarket
+
+actor User
+participant "Conditional Tokens Framework (CTF)" as CTF
+participant "Market Contract" as Market
+participant "Oracle Contract" as Oracle
+participant "Blockchain (On-Chain Data)" as Blockchain
+
+== User Places a Bet ==
+User -> CTF: Place Bet (Select Outcome, Stake Collateral)
+CTF -> Market: Mint Conditional Tokens (YES/NO)
+Market -> User: Issue Conditional Tokens
+
+== Market Resolution ==
+Oracle -> Market: Submit Market Outcome
+Market -> CTF: Finalize Winning Outcome
+CTF -> Blockchain: Update Token State
+
+== Token Redemption ==
+User -> CTF: Redeem Winning Tokens
+CTF -> Blockchain: Transfer Collateral
+CTF -> User: Send Payout (Collateral)
+
+== Losing Tokens Burned ==
+CTF -> Blockchain: Burn Losing Tokens
+
+@enduml

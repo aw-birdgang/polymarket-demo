@@ -1,0 +1,52 @@
+@startuml
+title Polymarket Smart Contract Class Diagram
+
+class MarketFactoryContract {
+  + createMarket(question, outcomes, oracle)
+  + deployFPMM()
+}
+
+class FixedProductMarketMaker {
+  + provideLiquidity(amount)
+  + trade(token, amount)
+  + withdrawLiquidity()
+}
+
+class ExchangeContract {
+  + placeOrder(order)
+  + matchOrders()
+  + executeTrade()
+}
+
+class ConditionalTokensFramework {
+  + mintTokens(user, outcome)
+  + redeemTokens(user, winningOutcome)
+  + burnLosingTokens()
+}
+
+class ProxyWalletContract {
+  + deposit(user, amount)
+  + withdraw(user, amount)
+  + executeTrade(user, order)
+}
+
+class OracleContract {
+  + requestMarketResolution(marketID)
+  + submitOutcome(marketID, outcome)
+}
+
+class DisputeResolutionContract {
+  + challengeOutcome(marketID)
+  + resolveDispute(marketID)
+}
+
+MarketFactoryContract --> FixedProductMarketMaker : deploys
+MarketFactoryContract --> OracleContract : registers for resolution
+ExchangeContract --> FixedProductMarketMaker : interacts with
+ExchangeContract --> ConditionalTokensFramework : issues tokens
+ProxyWalletContract --> ExchangeContract : forwards trades
+FixedProductMarketMaker --> ConditionalTokensFramework : updates balances
+OracleContract --> ConditionalTokensFramework : resolves outcomes
+DisputeResolutionContract --> OracleContract : handles disputes
+
+@enduml

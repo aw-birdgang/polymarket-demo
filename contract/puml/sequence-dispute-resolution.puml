@@ -1,0 +1,24 @@
+@startuml
+title Dispute Resolution Contract Flow in Polymarket
+
+actor User
+participant "Dispute Resolution Contract" as Dispute
+participant "Oracle Contract" as Oracle
+participant "UMA Voting System" as Voting
+participant "Blockchain (On-Chain Data)" as Blockchain
+
+== Dispute Raised ==
+User -> Dispute: Challenge Market Outcome (Stake Collateral)
+Dispute -> Blockchain: Record Dispute & Stake
+
+== Voting Process ==
+Dispute -> Voting: Request Vote on Market Outcome
+Voting -> Blockchain: Store Voting Results
+
+== Finalizing Outcome ==
+Voting -> Dispute: Submit Final Decision
+Dispute -> Blockchain: Update Market Outcome
+Dispute -> Oracle: Notify Resolution
+Dispute -> User: Return or Slash Stake
+
+@enduml

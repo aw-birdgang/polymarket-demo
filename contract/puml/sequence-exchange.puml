@@ -1,0 +1,26 @@
+@startuml
+title Exchange Contract Flow in Polymarket
+
+actor User
+participant "Exchange Contract" as Exchange
+participant "Order Book" as OrderBook
+participant "Blockchain (On-Chain Data)" as Blockchain
+
+User -> Exchange: Submit Order (Buy/Sell)
+Exchange -> OrderBook: Check for Matching Order
+OrderBook -> Exchange: Match Found? (Yes/No)
+
+alt Order Matched
+    Exchange -> Exchange: Execute Trade
+    Exchange -> Blockchain: Record Trade On-Chain
+    Exchange -> User: Confirm Trade Execution
+else No Match
+    Exchange -> OrderBook: Store Order in Order Book
+    Exchange -> User: Confirm Order Submission
+end
+
+User -> Exchange: Cancel Order (if unmatched)
+Exchange -> OrderBook: Remove Order from Order Book
+Exchange -> User: Confirm Order Cancellation
+
+@enduml

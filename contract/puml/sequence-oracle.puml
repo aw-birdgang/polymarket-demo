@@ -1,0 +1,28 @@
+@startuml
+title Oracle Contract Flow in Polymarket
+
+actor User
+participant "Oracle Contract" as Oracle
+participant "Market Contract" as Market
+participant "Dispute Resolution Contract" as Dispute
+participant "Blockchain (On-Chain Data)" as Blockchain
+
+== Market Resolution Request ==
+Market -> Oracle: Request Market Outcome
+
+== Data Submission ==
+User -> Oracle: Submit Proposed Outcome
+Oracle -> Blockchain: Store Proposed Outcome
+
+== Dispute Phase ==
+User -> Dispute: Challenge Outcome (Stake Collateral)
+Dispute -> Blockchain: Record Dispute
+Dispute -> Oracle: Request Vote on Correct Outcome
+
+== Finalizing Outcome ==
+Dispute -> Blockchain: Store Final Decision
+Oracle -> Market: Update Market with Final Outcome
+Market -> Blockchain: Update Market Status
+Oracle -> User: Confirm Resolution
+
+@enduml

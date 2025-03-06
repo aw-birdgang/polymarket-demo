@@ -1,0 +1,30 @@
+@startuml
+title Polymarket Smart Contract Component Diagram
+
+package "Polymarket" {
+
+  component "Market Factory Contract" as Factory
+  component "Fixed Product Market Maker (FPMM)" as FPMM
+  component "Exchange Contract" as Exchange
+  component "Conditional Tokens Framework" as CTF
+  component "Proxy Wallet Contract" as Proxy
+  component "Oracle Contract" as Oracle
+  component "Dispute Resolution Contract" as Dispute
+}
+
+User --> Proxy : Deposits, Withdraws Funds
+User --> Exchange : Submits Orders
+User --> Factory : Creates Market
+User --> Dispute : Challenges Market Outcome
+
+Proxy --> Exchange : Sends User Trades
+Exchange --> FPMM : Matches Orders
+Exchange --> CTF : Issues Conditional Tokens
+Factory --> FPMM : Deploys Market Maker
+Factory --> Oracle : Registers Market for Resolution
+FPMM --> CTF : Updates Token Balances
+Oracle --> CTF : Resolves Winning Outcome
+Dispute --> Oracle : Handles Disputes
+Oracle --> Factory : Updates Market Status
+
+@enduml

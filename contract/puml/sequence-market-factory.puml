@@ -1,0 +1,18 @@
+@startuml
+title Market Factory Contract Flow in Polymarket
+
+actor User
+participant "Market Factory Contract" as Factory
+participant "FPMM Contract" as FPMM
+participant "Oracle Contract" as Oracle
+participant "Blockchain (On-Chain Data)" as Blockchain
+
+== User Requests Market Creation ==
+User -> Factory: Request to Create Market (Question, Outcomes, Resolution Source)
+Factory -> Blockchain: Validate & Store Market Data
+Factory -> FPMM: Deploy Fixed Product Market Maker (FPMM)
+Factory -> Oracle: Register Market for Resolution
+Factory -> Blockchain: Record Market Creation
+Factory -> User: Confirm Market Deployment
+
+@enduml

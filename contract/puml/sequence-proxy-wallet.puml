@@ -1,0 +1,26 @@
+@startuml
+title Proxy Wallet Contract Flow in Polymarket
+
+actor User
+participant "Proxy Wallet Contract" as Wallet
+participant "Exchange/FPMM Contract" as Exchange
+participant "Blockchain (On-Chain Data)" as Blockchain
+
+== User Deposits Funds ==
+User -> Wallet: Deposit Collateral (USDC)
+Wallet -> Blockchain: Record Deposit
+Wallet -> User: Confirm Deposit
+
+== User Places a Bet / Trade ==
+User -> Wallet: Request Trade Execution
+Wallet -> Exchange: Forward Trade Request
+Exchange -> Wallet: Execute Trade
+Wallet -> Blockchain: Update User Balance
+Wallet -> User: Confirm Trade Execution
+
+== User Withdraws Funds ==
+User -> Wallet: Request Withdrawal
+Wallet -> Blockchain: Verify Balance & Process
+Wallet -> User: Send Withdrawn Funds
+
+@enduml

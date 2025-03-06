@@ -1,0 +1,35 @@
+@startuml
+title Fixed Product Market Maker (FPMM) Flow in Polymarket
+
+actor User
+participant "FPMM Contract" as FPMM
+participant "Market Contract" as Market
+participant "Blockchain (On-Chain Data)" as Blockchain
+
+== User Provides Liquidity ==
+User -> FPMM: Deposit Collateral (USDC)
+FPMM -> Blockchain: Mint LP Tokens (Liquidity Shares)
+FPMM -> User: Issue LP Tokens
+
+== User Trades (Buys Outcome Tokens) ==
+User -> FPMM: Swap Collateral for Outcome Tokens
+FPMM -> FPMM: Adjust Token Balances (X * Y = K)
+FPMM -> User: Send Outcome Tokens
+FPMM -> Blockchain: Record Trade
+
+== User Trades (Sells Outcome Tokens) ==
+User -> FPMM: Swap Outcome Tokens for Collateral
+FPMM -> FPMM: Adjust Token Balances (X * Y = K)
+FPMM -> User: Send Collateral
+FPMM -> Blockchain: Record Trade
+
+== Market Resolution ==
+Market -> FPMM: Submit Final Outcome
+FPMM -> Blockchain: Update Outcome Token Status
+
+== Liquidity Withdrawal ==
+User -> FPMM: Withdraw Liquidity
+FPMM -> Blockchain: Burn LP Tokens
+FPMM -> User: Return Collateral + Earned Fees
+
+@enduml

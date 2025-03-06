@@ -1,0 +1,38 @@
+@startuml
+title Polymarket Smart Contract Relationships
+
+actor User
+
+participant "Proxy Wallet Contract" as Proxy
+participant "Exchange Contract" as Exchange
+participant "Conditional Tokens Framework" as CTF
+participant "Fixed Product Market Maker (FPMM)" as FPMM
+participant "Market Factory Contract" as Factory
+participant "Oracle Contract" as Oracle
+participant "Dispute Resolution Contract" as Dispute
+
+== Market Creation ==
+User -> Factory: Create Market (Question, Outcomes, Resolution Source)
+Factory -> FPMM: Deploy Market Maker (AMM)
+Factory -> Oracle: Register Market for Resolution
+
+== User Trades ==
+User -> Proxy: Deposit Collateral (USDC)
+Proxy -> Exchange: Submit Order (Buy/Sell)
+Exchange -> FPMM: Execute Trade
+Exchange -> CTF: Mint Conditional Tokens
+FPMM -> CTF: Adjust Token Balances
+CTF -> User: Transfer Conditional Tokens
+
+== Market Resolution ==
+Oracle -> Factory: Fetch Market Data
+Oracle -> Dispute: Validate Outcome (Dispute Window)
+Dispute -> Oracle: Resolve Dispute (If challenged)
+Oracle -> CTF: Finalize Winning Outcome
+CTF -> User: Redeem Winning Tokens (Collateral)
+
+== User Withdraws ==
+User -> Proxy: Withdraw Funds
+Proxy -> Blockchain: Process Withdrawal
+
+@enduml

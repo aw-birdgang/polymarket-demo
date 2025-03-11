@@ -1,0 +1,27 @@
+@startuml
+actor User
+actor Oracle
+participant "ConditionalTokens" as Contract
+
+User -> Contract : prepareCondition(Oracle, "Will it rain?", 2)
+Contract -> Contract : Generate Condition ID
+
+User -> Contract : getCollectionId(0, Condition ID, 0b01)
+Contract -> User : Collection ID (Yes)
+
+User -> Contract : getCollectionId(0, Condition ID, 0b10)
+Contract -> User : Collection ID (No)
+
+User -> Contract : getPositionId(USDC, Collection ID)
+Contract -> User : Position ID (Yes, USDC)
+
+User -> Contract : splitPosition(USDC, 0, Condition ID, [0b01, 0b10], 10)
+Contract -> User : Mint ERC-1155 Position Tokens
+
+Oracle -> Contract : reportPayouts("Will it rain?", [1, 0])
+Contract -> Contract : Update Payout Numerators
+
+User -> Contract : redeemPositions(USDC, 0, Condition ID, [0b01])
+Contract -> User : Transfer USDC Payout
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+
+participant Buyer
+participant Seller
+participant CTFExchange
+
+Buyer -> Seller: Create Order (100 YES = 50 USDC)
+Seller -> CTFExchange: Submit Order
+CTFExchange -> CTFExchange: Verify Order
+CTFExchange -> Buyer: Transfer 100 YES Tokens
+CTFExchange -> Seller: Transfer 50 USDC
+CTFExchange -> Buyer: Emit OrderFilled Event
+CTFExchange -> Seller: Emit OrderFilled Event
+
+@enduml

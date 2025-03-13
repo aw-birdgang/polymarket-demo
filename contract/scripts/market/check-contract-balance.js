@@ -36,7 +36,7 @@ async function checkContractBalance() {
 checkContractBalance();
 
 /**
- * node scripts/market/check-contract-balance.js
+ * node scripts/market/deploy-gasless-erc20.js
  *
  * 💰 Checking contract balance...
  * 💼 Contract balance: 0.0 ETH

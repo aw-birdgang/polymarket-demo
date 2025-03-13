@@ -1,0 +1,13 @@
+@startuml
+actor User
+participant "Nest.js Server" as Server
+participant "GaslessERC20 Contract" as Contract
+participant "Ethereum Network" as Network
+
+User -> Server: POST /gasless-token/transfer\n{ to, amount }
+Server -> Contract: transfer(to, amount)
+Contract -> Network: Broadcast transaction
+Network -> Contract: Transaction mined
+Contract -> Server: Transaction receipt
+Server -> User: { transactionHash }
+@enduml

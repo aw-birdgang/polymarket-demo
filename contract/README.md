@@ -24,6 +24,105 @@ npx hardhat verify --list-networks
 ````
 
 
+# build & deploy minimal forwarder
+````
+> npx hardhat compile
+> npx hardhat run scripts/deploy-minimal-forwarder.js --network sepolia
+Deploying MinimalForwarder with account: 0x43EAAAaE78B6CA996A6f9eCF04d021e8af17db43
+MinimalForwarder deployed to: 0xaa785c3fDF249d85D5E7B0a1C43888179723B976
+
+> npx hardhat run scripts/verify-minimal-forwarder.js --network sepolia
+Verifying MinimalForwarder at address: 0xaa785c3fDF249d85D5E7B0a1C43888179723B976
+Successfully submitted source code for contract
+contracts/MinimalForwarder.sol:MinimalForwarder at 0xaa785c3fDF249d85D5E7B0a1C43888179723B976
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract MinimalForwarder on the block explorer.
+https://sepolia.etherscan.io/address/0xaa785c3fDF249d85D5E7B0a1C43888179723B976#code
+
+````
+
+
+# build & deploy my trusted forwarder
+````
+> npx hardhat compile
+
+> npx hardhat run scripts/deploy-and-verify-my-trusted-forwarder.js --network sepolia
+🚀 Deploying MyTrustedForwarder with account: 0x43EAAAaE78B6CA996A6f9eCF04d021e8af17db43
+✅ MyTrustedForwarder deployed to: 0xC02b643431f191cA344a0F9536f47386563A1E52
+⌛ Waiting for 5 block confirmations...
+⌛ Waiting 60 seconds before verification...
+🔍 Verifying contract on Etherscan...
+Successfully submitted source code for contract
+contracts/MyTrustedForwarder.sol:MyTrustedForwarder at 0xC02b643431f191cA344a0F9536f47386563A1E52
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract MyTrustedForwarder on the block explorer.
+https://sepolia.etherscan.io/address/0xC02b643431f191cA344a0F9536f47386563A1E52#code
+
+
+````
+
+
+
+# build & deploy gasless erc20 forwarder
+````
+> npx hardhat compile
+
+> npx hardhat run scripts/deploy-gasless-erc20.js --network sepolia
+Deploying contracts with account: 0x43EAAAaE78B6CA996A6f9eCF04d021e8af17db43
+GaslessERC20 deployed to: 0x10A395E6051FCA1Ef8dfDc69f825A64cFB30f99f
+
+
+> npx hardhat run scripts/verify-gasless-erc20.js --network sepolia
+Verifying GaslessERC20 at address: 0x10A395E6051FCA1Ef8dfDc69f825A64cFB30f99f
+Successfully submitted source code for contract
+contracts/GaslessERC20.sol:GaslessERC20 at 0x10A395E6051FCA1Ef8dfDc69f825A64cFB30f99f
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract GaslessERC20 on the block explorer.
+https://sepolia.etherscan.io/address/0x10A395E6051FCA1Ef8dfDc69f825A64cFB30f99f#code
+
+````
+
+
+# sample
+````
+node scripts/sample/sendGaslessTx.js
+
+````
+
+# check address
+````
+npx hardhat verify --network sepolia 0x10A395E6051FCA1Ef8dfDc69f825A64cFB30f99f
+[INFO] Sourcify Verification Skipped: Sourcify verification is currently disabled. To enable it, add the following entry to your Hardhat configuration:
+
+sourcify: {
+  enabled: true
+}
+
+Or set 'enabled' to false to hide this message.
+
+For more information, visit https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-verify#verifying-on-sourcify
+
+
+npx hardhat verify --network sepolia 0xC02b643431f191cA344a0F9536f47386563A1E52
+The contract 0xC02b643431f191cA344a0F9536f47386563A1E52 has already been verified on the block explorer. If you're trying to verify a partially verified contract, please use the --force flag.
+https://sepolia.etherscan.io/address/0xC02b643431f191cA344a0F9536f47386563A1E52#code
+
+
+npx hardhat console --network sepolia
+const GaslessERC20 = await ethers.getContractFactory("GaslessERC20");
+const forwarder = await ethers.getContractFactory("MyTrustedForwarder");
+const gasless = await GaslessERC20.deploy("GasToken", "GST", "0xC02b643431f191cA344a0F9536f47386563A1E52");
+const deployedForwarder = await forwarder.deploy();
+console.log("🚀 Deployed GaslessERC20 to:", gasless.address);
+console.log("🚀 Deployed Forwarder to:", deployedForwarder.address);
+
+
+````
+
+
 # debug
 ````
 > npx hardhat console --network sepolia
